@@ -1,0 +1,29 @@
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        int c=0;
+
+        HashMap<Integer, Integer> data = new HashMap<Integer, Integer>();
+        for(int n : nums){
+
+            if(data.containsKey(n)){
+                if( k==0 && data.get(n) == 1)
+                    c++;
+                data.put(n, data.get(n)+1);
+            }
+            else{
+                // int diff = n-k;
+                // int sum = n+k;
+
+                if(data.containsKey(n-k)){
+                    c += 1;
+                }
+                if(data.containsKey(n+k) ){
+                    c += 1;
+                }
+
+                data.put(n,1);
+            }
+        }
+        return c;
+    }
+}
