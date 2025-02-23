@@ -1,0 +1,16 @@
+class Solution {
+    public int climbStairs(int n) {
+        if (n == 1) return 1;
+        if (n == 2) return 2;
+        
+        int first = 1, second = 2, totalWays = 0;
+        
+        for (int i = 3; i <= n; i++) {
+            totalWays = first + second; // Sum of last two steps
+            first = second; // Move one step forward
+            second = totalWays; // Move another step forward
+        }
+        
+        return second; // Since second holds the final result
+    }
+}
